@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
-import './App.css';
-import Nav from '../components/Nav.jsx';
-import Cards from '../components/Cards.jsx';
-import About from '../components/About.jsx';
-import Ciudad from '../components/Ciudad.jsx';
-
-const apiKey = '4ae2636d8dfbdc3044bede63951a019b';
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
+import Nav from "../components/Nav.jsx";
+import Cards from "../components/Cards.jsx";
+import Ciudad from "../components/Ciudad.jsx";
+import "../components/About.jsx";
+import "./App.css";
 
 function App() {
+  const apiKey = "4ae2636d8dfbdc3044bede63951a019b";
   const [cities, setCities] = useState([]);
+
   function onClose(id) {
-    setCities(oldCities => oldCities.filter(c => c.id !== id));
+    setCities((oldCities) => oldCities.filter((c) => c.id !== id));
   }
+
   function onSearch(ciudad) {
     //Llamado a la API del clima
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`)
-      .then(r => r.json())
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`
+    )
+      .then((r) => r.json())
       .then((recurso) => {
         if (recurso.main !== undefined) {
           const ciudad = {
@@ -30,17 +33,21 @@ function App() {
             weather: recurso.weather[0].main,
             clouds: recurso.clouds.all,
             latitud: recurso.coord.lat,
-            longitud: recurso.coord.lon
+            longitud: recurso.coord.lon,
           };
-          setCities(oldCities => [...oldCities, ciudad]);
+
+          if (cities.filter((c) => c.id === recurso.id).length > 0) {
+            return alert("Ciudad ya agregada");
+          }
+
+          setCities((oldCities) => [...oldCities, ciudad]);
         } else {
           alert("Ciudad no encontrada");
         }
       });
   }
   function onFilter(ciudadId) {
-    let ciudad = cities.filter(c => c.id === parseInt(ciudadId));
-  //let ciudad = cities.find(c => c.id === parseInt(ciudadId)) <-- find retorna el primer elemento con el que matchea, aunque no devuelve un arreglo.
+    let ciudad = cities.filter((c) => c.id === parseInt(ciudadId));
     if (ciudad.length > 0) {
       return ciudad[0];
     } else {
@@ -49,11 +56,19 @@ function App() {
   }
   return (
     <div className="App">
-      <Route path='/' render={() => <Nav onSearch={onSearch}/>}/>
-      <Route exact path="/" render={() => <Cards cities={cities} onClose={onClose}/>}/>
-      <Route path="/about" component={About} />
-      <Route path="/ciudad/:idCiudad" render={({match}) => <Ciudad city={onFilter(match.params.idCiudad)}/>}/>
-      <hr />
+      <Route path="/" render={() => <Nav onSearch={onSearch} />} />
+      <Route
+        exact
+        path="/"
+        render={() => <Cards cities={cities} onClose={onClose} />}
+      />
+      {/* <Route path="/about" component={About} /> */}
+      <Route
+        path="/ciudad/:ciudadId"
+        render={({ match }) => (
+          <Ciudad city={onFilter(match.params.ciudadId)} />
+        )}
+      />
     </div>
   );
 }
