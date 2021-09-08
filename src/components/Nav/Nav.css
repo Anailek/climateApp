@@ -9,7 +9,7 @@
 .navbar {
   display: flex;
   box-shadow: 0 2px 5px rgb(90, 88, 88);
-  background: linear-gradient(to bottom, #81b9bf);
+  background: linear-gradient(#b2ebf2);
   align-content: center;
   justify-content: space-between;
   align-items: center;
@@ -20,11 +20,11 @@
 .navbar-brand {
   margin-left: 30px;
   color: #000000;
-  text-decoration: none;
   font-size: 40px;
 }
 
 .navbar-brand:hover {
   transform: scale(1.1);
   transition: transform .5s ease;
+  color: #b2ebf2;
 }

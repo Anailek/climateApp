@@ -25,6 +25,11 @@ button {
   padding-right: 30px;
 }
 
+.button_container img{
+  max-width: 25px;
+  max-height: 20px;
+}
+
 .card {
   margin: 20px;
   width: 18rem;

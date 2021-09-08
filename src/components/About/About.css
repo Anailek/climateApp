@@ -10,4 +10,6 @@
 .about:hover {
     transform: scale(1.1);
     transition: transform .5s ease;
+    color: #b2ebf2;
+    text-decoration: none;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar.jsx';
 import About from '../About/About.jsx'
-import './Nav/Nav.css';
+import '../Nav/Nav.css';
 
 function Nav({onSearch}) {
   return (

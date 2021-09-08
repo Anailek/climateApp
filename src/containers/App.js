@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
-import Nav from "../components/Nav.jsx";
-import Cards from "../components/Cards.jsx";
-import Ciudad from "../components/Ciudad.jsx";
-import "../components/About.jsx";
+import Nav from "../components/Nav/Nav.jsx";
+import Cards from "../components/Cards/Cards.jsx";
+import Ciudad from "../components/Ciudad/Ciudad.jsx";
+import "../components/About/About.jsx";
 import "./App.css";
 
+
+const apiKey = process.env.REACT_APP_API_KEY_WEATHER;
+// const apiKey = "4ae2636d8dfbdc3044bede63951a019b";
 function App() {
-  const apiKey = "4ae2636d8dfbdc3044bede63951a019b";
   const [cities, setCities] = useState([]);
 
   function onClose(id) {
@@ -17,7 +19,7 @@ function App() {
   function onSearch(ciudad) {
     //Llamado a la API del clima
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`
     )
       .then((r) => r.json())
       .then((recurso) => {
@@ -37,12 +39,12 @@ function App() {
           };
 
           if (cities.filter((c) => c.id === recurso.id).length > 0) {
-            return alert("Ciudad ya agregada");
+            return alert("City added!");
           }
 
           setCities((oldCities) => [...oldCities, ciudad]);
         } else {
-          alert("Ciudad no encontrada");
+          alert("City not found");
         }
       });
   }
