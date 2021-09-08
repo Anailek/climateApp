@@ -1,9 +1,9 @@
 import React from 'react';
+import Card from '../Card/Card.jsx';
 import './Cards.css';
 
-import Card from './Card.jsx';
 
-export default function Cards({cities, onClose}) {
+function Cards({cities, onClose}) {
   return (
     <div className='cards'>
       {cities.map(c => <Card
@@ -18,3 +18,4 @@ export default function Cards({cities, onClose}) {
     </div>
   );
 }
+export default Cards;
