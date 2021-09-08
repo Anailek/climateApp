@@ -1,0 +1,12 @@
+.search {
+    border-radius: 20px;
+    border-color:#f8f8f8;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.button {
+    border-radius: 20px;
+    height: 36px;
+    outline: none;
+}
