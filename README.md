@@ -1,6 +1,6 @@
 # :cloud: Climate App :cloud:
 
-:earth_americas: En esta app podrás conocer el estado del clima de diferentes ciudades del mundo. 
+:earth_americas: En esta app podrás conocer el estado actual del clima de diferentes ciudades del mundo. 
 
 Consume datos de [Open Weather Map](https://openweathermap.org/api) como API externa.
 
