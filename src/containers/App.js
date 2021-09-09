@@ -8,7 +8,6 @@ import "./App.css";
 
 
 const apiKey = process.env.REACT_APP_API_KEY_WEATHER;
-// const apiKey = "4ae2636d8dfbdc3044bede63951a019b";
 function App() {
   const [cities, setCities] = useState([]);
 
