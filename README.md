@@ -2,6 +2,9 @@
 
 :earth_americas: En esta app podrás conocer el estado actual del clima de diferentes ciudades del mundo. 
 
+![climate](https://user-images.githubusercontent.com/79233967/132712507-885877b5-e63d-4360-bce2-89b07b31dd9b.jpeg)
+
+
 Consume datos de [Open Weather Map](https://openweathermap.org/api) como API externa.
 
 Fue creada en un contexto académico como parte de una homework mientras cursaba en [Henry](https://www.soyhenry.com/), utilizando tecnologías como HTML5, CSS, Javascript y React.
